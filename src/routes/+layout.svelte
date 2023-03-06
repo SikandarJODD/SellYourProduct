@@ -1,7 +1,7 @@
 <script>
   import { page } from "$app/stores";
   $: RouteId = $page.route.id;
-  $: console.log(RouteId);
+  // $: console.log(RouteId);
   import "../app.css";
   import Logo from "$lib/logo.png";
   let data = {
