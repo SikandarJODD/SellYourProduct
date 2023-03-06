@@ -4,6 +4,7 @@
   // $: console.log(RouteId);
   import "../app.css";
   import Logo from "$lib/logo.png";
+  import Footer from "../lib/Footer.svelte";
   let data = {
     imgSrc: Logo,
     title: "Funky Tunky",
@@ -137,7 +138,9 @@
 <!-- <div class="box p-2 md:px-20"> -->
 <slot />
 
-<!-- </div> -->
+<!-- Footer -->
+<Footer />
+
 <style lang="postcss">
   .act {
     color: rgb(17, 170, 252);

@@ -4,7 +4,7 @@
     "This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.";
 </script>
 
-<div class=" py-6 bg-[#023047] sm:py-8 lg:py-12">
+<div class=" py-6 bg-[#003566] sm:py-8 lg:py-12 md:px-24">
   <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
     <div class="bg-slate-900 rounded-lg px-4 py-6 md:py-8 lg:py-12 shadow-md">
       <p

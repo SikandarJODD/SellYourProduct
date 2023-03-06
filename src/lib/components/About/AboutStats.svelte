@@ -23,7 +23,7 @@
   ];
 </script>
 
-<div class="bg-[#023047] py-6 sm:py-8 lg:py-12 border-t-2">
+<div class="bg-[#14213d] py-6 sm:py-8 lg:py-12 border-t-2">
   <div class="max-w-screen-lg px-4 md:px-8 mx-auto">
     <!-- text - start -->
     <div class="mb-8 md:mb-12">
