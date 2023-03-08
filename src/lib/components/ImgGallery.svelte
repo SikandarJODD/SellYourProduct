@@ -1,4 +1,6 @@
 <script>
+  import { mainPageData } from "./../../store.js";
+  let pageData = $mainPageData[3];
   let img1 =
     "https://i.pinimg.com/564x/d2/ce/41/d2ce415a0159b22fc40ccc26d2ba623c.jpg";
   // Short img2
@@ -21,7 +23,7 @@
       >
         <!-- svelte-ignore a11y-img-redundant-alt -->
         <img
-          src={img1}
+          src={pageData.img1}
           loading="lazy"
           alt="Photo by Minh Pham"
           class="w-full h-full object-cover object-right-bottom absolute inset-0 group-hover:scale-110 transition duration-200"
@@ -33,7 +35,7 @@
 
         <span
           class="inline-block text-white text-sm md:text-lg relative ml-4 md:ml-5 mb-3"
-          >VR</span
+          >{pageData.img1text}</span
         >
       </a>
       <!-- image - end -->
@@ -45,7 +47,7 @@
       >
         <!-- svelte-ignore a11y-img-redundant-alt -->
         <img
-          src={img2}
+          src={pageData.img2}
           loading="lazy"
           alt="Photo by Magicle"
           class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200"
@@ -57,7 +59,7 @@
 
         <span
           class="inline-block text-white text-sm md:text-lg relative ml-4 md:ml-5 mb-3"
-          >Tech</span
+          >{pageData.img2text}</span
         >
       </a>
       <!-- image - end -->
@@ -69,7 +71,7 @@
       >
         <!-- svelte-ignore a11y-img-redundant-alt -->
         <img
-          src={img3}
+          src={pageData.img3}
           loading="lazy"
           alt="Photo by Martin Sanchez"
           class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110 transition duration-200"
@@ -81,7 +83,7 @@
 
         <span
           class="inline-block text-white text-sm md:text-lg relative ml-4 md:ml-5 mb-3"
-          >Dev</span
+          >{pageData.img3text}</span
         >
       </a>
       <!-- image - end -->
@@ -93,7 +95,7 @@
       >
         <!-- svelte-ignore a11y-img-redundant-alt -->
         <img
-          src={img4}
+          src={pageData.img4}
           loading="lazy"
           alt="Photo by Lorenzo Herrera"
           class="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-110   transition duration-200"
@@ -105,7 +107,7 @@
 
         <span
           class="inline-block text-white text-sm md:text-lg relative ml-4 md:ml-5 mb-3"
-          >Retro</span
+          >{pageData.img4text}</span
         >
       </a>
       <!-- image - end -->

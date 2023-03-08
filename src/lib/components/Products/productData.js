@@ -1,7 +1,7 @@
 export let pgdata = [
     {
         id: 1,
-        title: "Fancy Outfit",
+        title: "fifi",
         brand: "Fancy Brand",
         price: "$19.99",
         oldprice: "$39.99",

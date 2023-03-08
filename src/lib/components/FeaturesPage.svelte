@@ -1,40 +1,6 @@
 <script>
-  let featureTitle = "Kickstart your marketing";
-  let featureText =
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur aliquam doloribus nesciunt eos fugiat. Vitae aperiam fugit consequuntur saepe laborum.";
-  let featureData = [
-    {
-      title: "Digial Campaigns",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci distinctio alias voluptatum blanditiis laudantium.",
-    },
-    {
-      title: "Digial Campaigns",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci distinctio alias voluptatum blanditiis laudantium.",
-    },
-    {
-      title: "Digial Campaigns",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci distinctio alias voluptatum blanditiis laudantium.",
-    },
-    {
-      title: "Digial Campaigns",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci distinctio alias voluptatum blanditiis laudantium.",
-    },
-    {
-      title: "Digial Campaigns",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci distinctio alias voluptatum blanditiis laudantium.",
-    },
-    {
-      title: "Digial Campaigns",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ut quo possimus adipisci distinctio alias voluptatum blanditiis laudantium.",
-    },
-  ];
-  let btnText = "Get Started Today";
+  import { mainPageData } from "./../../store.js";
+  let pageData = $mainPageData[4];
 </script>
 
 <section class="bg-gray-900 text-white">
@@ -42,15 +8,15 @@
     class="mx-auto max-w-screen-xl px-4 py-8 sm:py-12 sm:px-6 lg:py-16 lg:px-8"
   >
     <div class="mx-auto max-w-2xl text-center">
-      <h2 class="text-3xl font-bold sm:text-5xl">{featureTitle}</h2>
+      <h2 class="text-3xl font-bold sm:text-5xl">{pageData.title}</h2>
 
       <p class="mt-4 text-gray-300">
-        {featureText}
+        {pageData.subtitle}
       </p>
     </div>
 
     <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {#each featureData as item}
+      {#each pageData.featuresDesc as item}
         <a
           class="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-cyan-500/10 hover:shadow-cyan-500/10"
           href="/services/digital-campaigns"
@@ -88,7 +54,7 @@
         href="/products"
         class="inline-block rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-sky-600 focus:outline-none "
       >
-        {btnText}
+        {pageData.btnText}
       </a>
     </div>
   </div>
