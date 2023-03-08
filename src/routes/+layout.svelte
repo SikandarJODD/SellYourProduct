@@ -1,28 +1,11 @@
 <script>
+  import { layoutData } from "../store";
   import { page } from "$app/stores";
   $: RouteId = $page.route.id;
   // $: console.log(RouteId);
   import "../app.css";
-  import Logo from "$lib/logo.png";
   import Footer from "../lib/Footer.svelte";
-  let data = {
-    imgSrc: Logo,
-    title: "Funky Tunky",
-    navs: [
-      {
-        nv: "Home",
-        link: "/",
-      },
-      {
-        nv: "Products",
-        link: "/products",
-      },
-      {
-        nv: "About Us",
-        link: "/about",
-      },
-    ],
-  };
+  let data = $layoutData;
 </script>
 
 <!-- You Can Add bg-base-100 or bg-gray-900 border-b-2 border-slate-200 -->
@@ -79,8 +62,8 @@
   </div>
 </div>
 <!-- Bottom Navigation for Phone -->
-<div class="btm-nav md:hidden">
-  <a href="/" class={RouteId === "/" ? "text-info active" : " "}>
+<div class="btm-nav md:hidden z-10 backdrop-blur-sm bg-transparent">
+  <a href="/" class={RouteId === "/" ? "text-info active bg-[#0FBBFF3F]" : " "}>
     <button>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +82,27 @@
   </a>
   <a
     href="/products"
-    class={RouteId === "/products" ? "text-info active" : " "}
+    class={RouteId === "/products" ? "text-info active bg-[#0FBBFF3F]" : " "}
+  >
+    <button>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+        /></svg
+      >
+    </button>
+  </a>
+  <a
+    href="/about"
+    class={RouteId === "/about" ? "text-info active bg-[#0FBBFF3F]" : " "}
   >
     <button>
       <svg
@@ -113,23 +116,6 @@
           stroke-linejoin="round"
           stroke-width="2"
           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-        /></svg
-      >
-    </button>
-  </a>
-  <a href="/about" class={RouteId === "/about" ? "text-info active" : " "}>
-    <button>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        ><path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
         /></svg
       >
     </button>

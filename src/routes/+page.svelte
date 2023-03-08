@@ -11,6 +11,13 @@
 
 <svelte:head>
   <title>{metaTitle}</title>
+  <link
+    rel="shortcut icon"
+    href={$mainPageData[0].metaImg}
+    type="image/x-icon"
+  />
+  <meta name="description" content={$mainPageData[0].metaDesc} />
+  <meta name="og:image" content={$mainPageData[0].metaImg} />
 </svelte:head>
 <main>
   <PageHero />

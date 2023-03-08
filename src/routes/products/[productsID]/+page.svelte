@@ -11,11 +11,11 @@
 </script>
 
 <section class="text-gray-400 bg-gray-900 body-font overflow-hidden">
-  <div class="container px-5 py-24 mx-auto">
+  <div class="container px-5 py-10 md:py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
       <img
         alt="ecommerce"
-        class="lg:w-1/2 w-full lg:h-[500px] h-64 shadow-2xl shadow-slate-900 object-cover object-center rounded-xl"
+        class="lg:w-1/2 md:w-full lg:h-[500px] h-80 w-80 flex mx-auto  shadow-2xl hover:rounded-3xl hover:shadow-slate-800 object-cover object-center rounded-xl hover:scale-105 transition-all duration-300 hover:-translate-y-8 "
         src={$productData[id - 1].img}
       />
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">

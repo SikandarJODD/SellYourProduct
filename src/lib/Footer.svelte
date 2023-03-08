@@ -1,10 +1,6 @@
 <script>
-  let footerTitle = "Funky Tunky";
-  let footerLink = "funkytunky";
-  let facebookLink = "https://www.facebook.com/sikandar.s.bhide/";
-  let twitterLink = "https://twitter.com/Sikandar_Bhide";
-  let instagramLink = "https://www.instagram.com/sikandar.s.bhide/";
-  let linkedinLink = "https://www.linkedin.com/in/sikandar-bhide-5b1b3b1b/";
+  import { footerData } from "./../store.js";
+  let fData = $footerData;
 </script>
 
 <footer class="text-gray-400 bg-gray-900 body-font">
@@ -27,17 +23,17 @@
       >
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
       </svg>
-      <span class="ml-3 text-xl">{footerTitle}</span>
+      <span class="ml-3 text-xl">{fData.footerTitle}</span>
     </a>
     <p
       class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4"
     >
-      © 2023 {footerTitle} —
+      © 2023 {fData.footerTitle} —
       <a
-        href={linkedinLink}
+        href={fData.linkedinLink}
         class="text-gray-500 ml-1"
         target="_blank"
-        rel="noopener noreferrer">@{footerLink}</a
+        rel="noopener noreferrer">@{fData.footerLink}</a
       >
     </p>
     <span
@@ -46,7 +42,7 @@
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         class="text-gray-400 hover:text-sky-600 "
-        href={facebookLink}
+        href={fData.facebookLink}
         target="_blank"
         rel="noreferrer"
       >
@@ -66,7 +62,7 @@
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         class="ml-3 text-gray-400 hover:text-sky-600"
-        href={twitterLink}
+        href={fData.twitterLink}
         target="_blank"
         rel="noreferrer"
       >
@@ -86,7 +82,7 @@
       <!-- svelte-ignore a11y-missing-attribute -->
       <a
         class="ml-3 text-gray-400 hover:text-sky-600"
-        href={instagramLink}
+        href={fData.instagramLink}
         target="_blank"
         rel="noreferrer"
       >
@@ -105,7 +101,7 @@
       </a>
       <a
         class="ml-3 text-gray-400 hover:text-sky-600"
-        href={linkedinLink}
+        href={fData.linkedinLink}
         target="_blank"
         rel="noreferrer"
       >

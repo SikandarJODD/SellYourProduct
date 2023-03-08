@@ -1,17 +1,47 @@
 import { writable } from "svelte/store";
 
-
+// Layout.svelte : 
+import Logo from "$lib/logo.png";
+export let layoutData = writable({
+    imgSrc: Logo,
+    title: "Funky Tunky",
+    navs: [
+        {
+            nv: "Home",
+            link: "/",
+        },
+        {
+            nv: "Products",
+            link: "/products",
+        },
+        {
+            nv: "About Us",
+            link: "/about",
+        },
+    ],
+});
+// Footer Page : 
+export let footerData = writable({
+    footerTitle: "Funky Tunky",
+    footerLink: "funkytunky",
+    facebookLink: "https://www.facebook.com/sikandar.s.bhide/",
+    twitterLink: "https://twitter.com/Sikandar_Bhide",
+    instagramLink: "https://www.instagram.com/sikandar.s.bhide/",
+    linkedinLink: "https://www.linkedin.com/in/sikandar-bhide-5b1b3b1b/",
+});
 // Main page : 
 export let mainPageData = writable([
     {
         id: 1,
-        metaTitle: "Home",
+        metaTitle: "Build Wesite",
+        metaDesc: "Website Started Created by Sikandar Bhide",
+        metaImg: "https://cdn-icons-png.flaticon.com/512/4791/4791243.png"
     },
     {
         // +page.svelte data
         id: 2,
-        title: "Happiness is Illusi...",
-        subtitle: "Endless Pain",
+        title: "Welcome to Funky Tunky",
+        subtitle: "Classic Cars",
         subtext: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus numquam ea!",
         btn1: "Products",
         btn2: "About",
