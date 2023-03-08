@@ -1,9 +1,6 @@
 <script>
-  import { pgdata } from "$lib/components/Products/productData.js";
-  let prdoucttitle = "Product Collections";
-
-  let pgtext =
-    "This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.";
+  import { productData } from "./../../../store.js";
+  import { productsInfo } from "./../../../store.js";
 </script>
 
 <div class="bg-gray-900 py-6 sm:py-8 lg:py-12">
@@ -13,11 +10,11 @@
       <h2
         class="text-sky-300 text-2xl lg:text-4xl font-bold text-center mb-4 md:mb-6"
       >
-        {prdoucttitle}
+        {$productsInfo.title}
       </h2>
 
       <p class="max-w-screen-md text-slate-500 md:text-lg text-center mx-auto">
-        {pgtext}
+        {$productsInfo.subtext}
       </p>
     </div>
     <!-- text - end -->
@@ -26,7 +23,7 @@
       class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8"
     >
       <!-- product - start -->
-      {#each pgdata as product}
+      {#each $productData as product}
         <div>
           <a
             href="/products/{product.id}"

@@ -1,4 +1,6 @@
 <script>
+  import { aboutInfo } from "../../../store";
+  let abtData = $aboutInfo[0];
   let abouttitle = "Revolutionary way to build the web";
   let aboutText =
     "This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.";
@@ -10,17 +12,17 @@
       <p
         class="text-indigo-500 lg:text-lg font-semibold text-center mb-2 md:mb-3"
       >
-        Introducing
+        {abtData.smltitle}
       </p>
 
       <h2
         class="text-slate-100 text-2xl lg:text-4xl font-bold text-center mb-4 md:mb-6"
       >
-        {abouttitle}
+        {abtData.title}
       </h2>
 
       <p class="max-w-screen-md text-slate-500 md:text-lg text-center mx-auto">
-        {aboutText}
+        {abtData.subtitle}
       </p>
     </div>
   </div>

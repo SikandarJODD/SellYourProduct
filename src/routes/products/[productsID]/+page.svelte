@@ -1,6 +1,7 @@
 <script>
   import { page } from "$app/stores";
-
+  import { productData } from "../../../store";
+  import { productsInfo } from "../../../store";
   import { pgdata } from "$lib/components/Products/productData.js";
   //   Routed Id
   let id = $page.params.productsID;
@@ -15,14 +16,14 @@
       <img
         alt="ecommerce"
         class="lg:w-1/2 w-full lg:h-[500px] h-64 shadow-2xl shadow-slate-900 object-cover object-center rounded-xl"
-        src={pgdata[id - 1].img}
+        src={$productData[id - 1].img}
       />
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">
-          {pgdata[id - 1].brand}
+          {$productData[id - 1].brand}
         </h2>
         <h1 class="text-white text-3xl title-font font-medium mb-1">
-          {pgdata[id - 1].title}
+          {$productData[id - 1].title}
         </h1>
         <div class="flex mb-4">
           <span class="flex items-center">
@@ -96,6 +97,7 @@
           <span
             class="flex ml-3 pl-3 py-2 border-l-2 border-gray-800 text-gray-500 space-x-2"
           >
+            <!-- svelte-ignore a11y-missing-attribute -->
             <a>
               <svg
                 fill="currentColor"
@@ -110,6 +112,7 @@
                 />
               </svg>
             </a>
+            <!-- svelte-ignore a11y-missing-attribute -->
             <a>
               <svg
                 fill="currentColor"
@@ -124,6 +127,7 @@
                 />
               </svg>
             </a>
+            <!-- svelte-ignore a11y-missing-attribute -->
             <a>
               <svg
                 fill="currentColor"
@@ -177,11 +181,11 @@
         </div>
         <div class="flex">
           <span class="title-font font-medium text-2xl text-white"
-            >{pgdata[id - 1].price}</span
+            >{$productData[id - 1].price}</span
           >
           <button
             class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-            >{btn}</button
+            >{$productsInfo.btn}</button
           >
         </div>
       </div>

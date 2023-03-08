@@ -1,26 +1,6 @@
 <script>
-  let aboutStatTitle = "Our Team by the numbers";
-  let aboutStatText =
-    " We are a small team of passionate people who love what we do. We are always looking for new talent to join our team.";
-
-  let aboutStatData = [
-    {
-      title: "200",
-      text: "People",
-    },
-    {
-      title: "500+",
-      text: "People",
-    },
-    {
-      title: "1000+",
-      text: "Customers",
-    },
-    {
-      title: "A couple",
-      text: "Coffee breaks",
-    },
-  ];
+  import { aboutInfo } from "../../../store";
+  let abtData = $aboutInfo[2];
 </script>
 
 <div class="bg-[#14213d] py-6 sm:py-8 lg:py-12 border-t-2">
@@ -30,11 +10,11 @@
       <h2
         class="text-slate-200 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6"
       >
-        {aboutStatTitle}
+        {abtData.title}
       </h2>
 
       <p class="max-w-screen-md text-gray-500 md:text-lg text-center mx-auto">
-        {aboutStatText}
+        {abtData.subtext}
       </p>
     </div>
     <!-- text - end -->
@@ -42,7 +22,7 @@
     <div
       class="grid grid-cols-2 md:grid-cols-4 bg-indigo-500 rounded-lg gap-6 md:gap-8 p-6 md:p-8"
     >
-      {#each aboutStatData as item}
+      {#each abtData.stats as item}
         <!-- stat - start -->
         <div class="flex flex-col items-center">
           <div class="text-white text-xl sm:text-2xl md:text-3xl font-bold">

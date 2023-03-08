@@ -1,4 +1,6 @@
 <script>
+  import { aboutInfo } from "../../../store";
+  let abtData = $aboutInfo[1];
   let aboutPageTitle = "About us";
   let aboutPageText =
     "This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random or otherwise generated.";
@@ -15,15 +17,15 @@
     <h1
       class="text-slate-200 text-2xl sm:text-5xl font-bold text-center mb-4 md:mb-6"
     >
-      {aboutPageTitle}
+      {abtData.title}
     </h1>
 
     <p class="text-slate-300 sm:text-lg mb-6 md:mb-8">
-      {aboutPageText}
+      {abtData.subtext}
     </p>
 
     <ul class="list-disc list-inside text-sky-500 sm:text-lg mb-6 md:mb-8">
-      {#each aboutPgData as item}
+      {#each abtData.liData as item}
         <li>{item}</li>
       {/each}
     </ul>
@@ -31,9 +33,7 @@
     <blockquote
       class="text-slate-300 sm:text-lg italic border-l-4 pl-4 md:pl-6 mb-6 md:mb-8"
     >
-      “This is a section of some simple filler text, also known as placeholder
-      text. It shares some characteristics of a real written text but is random
-      or otherwise generated.”
+      “{abtData.quote}”
     </blockquote>
 
     <div
@@ -41,8 +41,7 @@
     >
       <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
-        src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600&h=350"
-        loading="lazy"
+        src={abtData.abtImg}
         alt="Photo by Minh Pham"
         class="w-full h-full object-cover object-center"
       />
