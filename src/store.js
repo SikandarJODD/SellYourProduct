@@ -50,11 +50,11 @@ export let mainPageData = writable([
     {
         // +page.svelte data  <PageProd />
         id: 3,
-        title: "Vintage Cars",
+        title: "Recent Products",
         img1: "https://i.pinimg.com/564x/d1/44/bc/d144bca97b033bdb904bf7c313cf2c93.jpg",
         img2: "https://i.pinimg.com/564x/0a/8a/c0/0a8ac0cbaa1e69e295fb9ceb98deed99.jpg",
         btn: "View All",
-        text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas rerum quam amet provident nulla error!",
+        text: "Sell Any Product on our Website, we provide you the best platform to sell your product online",
     },
     {
         // +page.svelte data  <ImgGallery />

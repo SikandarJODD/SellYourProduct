@@ -53,7 +53,7 @@
       <!-- Laptop -->
       {#each data.navs as nav}
         <li>
-          <a href={nav.link} class="mx-1" class:act={RouteId == nav.link}
+          <a href={nav.link} class="mx-1 " class:act={RouteId == nav.link}
             >{nav.nv}</a
           >
         </li>
@@ -129,11 +129,15 @@
 
 <style lang="postcss">
   .act {
-    color: rgb(17, 170, 252);
-    background: #46617dc4;
+    color: rgb(17, 236, 252);
+    background: #4f6e90c4;
+    border-radius: 10px;
   }
   #nav_height {
     min-height: 60px;
     height: 60px !important;
+  }
+  li > a {
+    color: rgba(43, 195, 255, 0.704);
   }
 </style>

@@ -22,7 +22,7 @@
 <main>
   <PageHero />
   <PageProd />
-  <ImgGallery />
+  <!-- <ImgGallery /> -->
   <FeaturesPage />
   <PageStats />
 </main>
