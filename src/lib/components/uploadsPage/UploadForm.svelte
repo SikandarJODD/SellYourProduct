@@ -1,4 +1,16 @@
 <script>
+  import { onMount } from "svelte";
+  import supabase from "$lib/db.js";
+
+  $: backData = [];
+  onMount(async () => {
+    let { data, error } = await supabase.from("pdet").select("*");
+    backData = data;
+    console.log(backData);
+  });
+  // .env
+  // .env.*
+  // !.env.example
   // Products Details including
   // - Product Name
   // - Product Image
@@ -11,7 +23,43 @@
     image: "",
     price: "",
     description: "",
+    authorName: "",
+    authorEmail: "",
+    authorPhone: "",
+    productQuantity: 1,
   };
+  let handleForm = async () => {
+    const { data, error } = await supabase.from("pdet").insert([productData]);
+    productData.name = "";
+    productData.image = "";
+    productData.price = "";
+    productData.description = "";
+    productData.authorName = "";
+    productData.authorEmail = "";
+    productData.authorPhone = "";
+    productData.productQuantity = 1;
+  };
+  $: fifu = "";
+  $: if (productData.price.length > 3) {
+    let mint = productData.price.split("");
+    let mintlen = mint.length;
+    mint.splice(mintlen - 3, 0, ",");
+    fifu = mint.join("");
+  }
+  $: if (productData.price.length >= 6) {
+    let mint = productData.price.split("");
+    let mintlen = mint.length;
+    mint.splice(mintlen - 3, 0, ",");
+    mint.splice(mintlen - 5, 0, ",");
+    fifu = mint.join("");
+  }
+  $: if (productData.productQuantity > 5) {
+    productData.productQuantity = 5;
+  }
+  $: if (productData.authorPhone.length > 10) {
+    productData.authorPhone = productData.authorPhone.slice(0, 10);
+    alert("Phone Number Should be 10 Digits");
+  }
 </script>
 
 <main>
@@ -52,7 +100,15 @@
 
               <div class="flex items-end gap-2">
                 <span class="font-bold text-gray-800 lg:text-lg"
-                  >Rs.{productData.price === "" ? "2500" : productData.price} /-</span
+                  >Rs.
+                  {#if productData.price.length == ""}
+                    2500
+                  {:else if productData.price > 3}
+                    {fifu}
+                  {:else}
+                    {productData.price}
+                  {/if}
+                  /-</span
                 >
               </div>
             </div>
@@ -61,11 +117,12 @@
         </div>
 
         <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-          <form action="" class="space-y-4">
+          <form on:submit|preventDefault={handleForm} class="space-y-4">
             <div>
               <label class=" text-black font-medium mb-2" for="name"
                 >Product Title :
                 <input
+                  required
                   class=" rounded-lg border-gray-200 p-3 text-sm focus:text-sky-500"
                   placeholder="Drone, Camera, Book, etc."
                   type="text"
@@ -78,6 +135,7 @@
               <label class=" text-black font-medium mb-2" for="productPrice"
                 >Product Price :
                 <input
+                  required
                   class=" rounded-lg border-gray-200 p-3 text-sm focus:text-sky-500"
                   placeholder="2500 /- "
                   type="text"
@@ -90,6 +148,7 @@
               <label class=" text-black font-medium mb-2" for="productImage"
                 >Product Image :
                 <input
+                  required
                   class=" rounded-lg border-gray-200 p-3 text-sm focus:text-sky-500"
                   placeholder="Image Url"
                   type="url"
@@ -103,11 +162,13 @@
               <div>
                 <label class="sr-only" for="authorName">Author Name</label>
                 <input
+                  required
                   class="w-full rounded-lg border-gray-200 p-3 text-sm"
                   placeholder="Author Name"
                   type="text"
                   name="name"
                   id="authorName"
+                  bind:value={productData.authorName}
                 />
               </div>
 
@@ -118,6 +179,7 @@
                   placeholder="Phone Number"
                   type="tel"
                   id="phone"
+                  bind:value={productData.authorPhone}
                 />
               </div>
             </div>
@@ -129,6 +191,7 @@
                   placeholder="Email address"
                   type="email"
                   id="email"
+                  bind:value={productData.authorEmail}
                 />
               </div>
             </div>
@@ -141,15 +204,30 @@
                 placeholder="Product Description"
                 rows="4"
                 id="message"
+                bind:value={productData.description}
               />
             </div>
 
+            <div class="mt-8 flex gap-4">
+              <div>
+                <label for="quantity" class="mr-4">Product Quantity</label>
+
+                <input
+                  bind:value={productData.productQuantity}
+                  type="number"
+                  id="quantity"
+                  min="1"
+                  max="6"
+                  class="w-12 rounded border-2 border-slate-900  py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+                />
+              </div>
+            </div>
             <div class="mt-4">
               <button
                 type="submit"
-                class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto"
+                class="inline-block w-full rounded-lg bg-green-500 hover:bg-green-100 border-2 hover:border-slate-900 px-5 py-3 font-medium text-white hover:text-green-500 transition-all duration-200 hover:scale-105 sm:w-auto"
               >
-                Send Enquiry
+                Uplaod Project
               </button>
             </div>
           </form>
@@ -276,21 +354,30 @@
               </div>
             </div>
 
-            <p class="text-lg font-bold">$119.99</p>
+            <p class="text-lg font-bold">
+              Rs.
+              {#if productData.price.length == ""}
+                2500
+              {:else if productData.price > 3}
+                {fifu}
+              {:else}
+                {productData.price}
+              {/if}
+            </p>
           </div>
 
           <div class="mt-4">
             <div class="prose max-w-none">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                veniam dicta beatae eos ex error culpa delectus rem tenetur,
-                architecto quam nesciunt, dolor veritatis nisi minus inventore,
-                rerum at recusandae?
+                {#if productData.description.length == ""}
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Voluptates, quae. Lorem ipsum dolor sit amet consectetur
+                  adipisicing elit. Voluptates, quae.
+                {:else}
+                  {productData.description}
+                {/if}
               </p>
             </div>
-
-            <button class="mt-2 text-sm font-medium underline">Read More</button
-            >
           </div>
 
           <form class="mt-8">
@@ -344,108 +431,6 @@
                 </label>
               </div>
             </fieldset>
-
-            <fieldset class="mt-4">
-              <legend class="mb-1 text-sm font-medium">Size</legend>
-
-              <div class="flex flex-wrap gap-1">
-                <label for="size_xs" class="cursor-pointer">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_xs"
-                    class="peer sr-only"
-                  />
-
-                  <span
-                    class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                  >
-                    XS
-                  </span>
-                </label>
-
-                <label for="size_s" class="cursor-pointer">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_s"
-                    class="peer sr-only"
-                  />
-
-                  <span
-                    class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                  >
-                    S
-                  </span>
-                </label>
-
-                <label for="size_m" class="cursor-pointer">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_m"
-                    class="peer sr-only"
-                  />
-
-                  <span
-                    class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                  >
-                    M
-                  </span>
-                </label>
-
-                <label for="size_l" class="cursor-pointer">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_l"
-                    class="peer sr-only"
-                  />
-
-                  <span
-                    class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                  >
-                    L
-                  </span>
-                </label>
-
-                <label for="size_xl" class="cursor-pointer">
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size_xl"
-                    class="peer sr-only"
-                  />
-
-                  <span
-                    class="group inline-flex h-8 w-8 items-center justify-center rounded-full border text-xs font-medium peer-checked:bg-black peer-checked:text-white"
-                  >
-                    XL
-                  </span>
-                </label>
-              </div>
-            </fieldset>
-
-            <div class="mt-8 flex gap-4">
-              <div>
-                <label for="quantity" class="sr-only">Qty</label>
-
-                <input
-                  type="number"
-                  id="quantity"
-                  min="1"
-                  value="1"
-                  class="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                class="block rounded bg-green-600 px-5 py-3 text-xs font-medium text-white hover:bg-green-500"
-              >
-                Add to Cart
-              </button>
-            </div>
           </form>
         </div>
       </div>
